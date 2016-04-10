@@ -259,6 +259,43 @@ arm-fsl-linux-gnueabi-objcopy -O binary qemuboot.elf qemuboot.bin
 ```
 qemu-system-arm -M versatilepb -nographic -kernel qemuboot.bin
 ```
+> 练习：编写Makefile文件，完成上述编译过程。
+参考：
+
+```
+
+CROSS_COMPILE = arm-fsl-linux-gnueabi-
+AS	= $(CROSS_COMPILE)as
+CC	= $(CROSS_COMPILE)gcc
+LD	= $(CROSS_COMPILE)ld
+OBJCOPY	= $(CROSS_COMPILE)objcopy
+OBJDUMP	= $(CROSS_COMPILE)objdump
+
+CFLAGS 	= 
+LDFLAGS = 
+
+BIN = boot.bin
+
+all: $(BIN)
+
+ $(BIN):
+    @echo "generating a binary file from a ELF file"
+    $(OBJCOPY)    
+    
+boot_elf:
+
+    @echo "build a ELF file"
+    $(LD)	
+
+.PHONY: all clean
+
+clean:
+    @echo Cleaning...
+    @echo Files:
+    @echo Build output:
+    rm -rf *.o
+
+```
 
 ## 4 IMX287启动过程
 
