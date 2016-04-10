@@ -41,7 +41,7 @@ sudo mount -t vboxsf vboxshare ~/share
 - 如果未安装git，首先安装git
 
 ```
-sudo apt-get git
+sudo apt-get install git
 ```
 
 Freescale的[Git网站](http://git.freescale.com/git/)，相关信息：
