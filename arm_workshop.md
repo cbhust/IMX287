@@ -44,6 +44,33 @@ sudo mount -t vboxsf vboxshare ~/share
 sudo apt-get install git
 ```
 
+> git安装问题解决
+sudo apt-get install git 出现依赖关系问题；
+解决思路 ：更换 apt 软件源列表；
+具体方法 ：
+1. 首先备份源列表(for sure):
+sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
+2.而后用gedit或其他编辑器打开:
+gksu gedit /etc/apt/sources.list
+3.选择合适的源，替换掉文件中所有的内容，保存编辑好的文件:
+选用ubuntu 12.04官方软件源：
+deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ precise-proposed main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ precise-proposed main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse
+4.然后，刷新列表:
+sudo apt-get update
+官网参考网站：
+http://wiki.ubuntu.org.cn/Qref/Source
+http://wiki.ubuntu.org.cn/Template:12.04source
+
+
 Freescale的[Git网站](http://git.freescale.com/git/)，相关信息：
 - Branch [分支](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000)
 - Tag: [标签](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013762144381812a168659b3dd4610b4229d81de5056cc000)
