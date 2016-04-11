@@ -6,7 +6,7 @@
 
 - 到[Ubuntu官网下载区](http://www.ubuntu.com/download/alternative-downloads)下载Ubuntu 12.04.5 LTS DeskTop 镜像文件，根据具体的计算机硬件选择32位版本还是64位版本，硬件支持情况下尽量选64位版本。
 
-> 从[周立功网站](www.zlg.cn/linux)也可以下载ubuntu镜像，与从ubuntu官方网站下载的镜像相比，该镜像已经安装好了Freescale的交叉编译环境。也可从该页面直接下载虚拟机文件在虚拟机软件中直接打开，就省掉了ubuntu安装过程。
+> 从[周立功网站](http://www.zlg.cn/linux)也可以下载ubuntu镜像，与从ubuntu官方网站下载的镜像相比，该镜像已经安装好了Freescale的交叉编译环境。也可从该页面直接下载虚拟机文件在虚拟机软件中直接打开，就省掉了ubuntu安装过程。
 
 - 在Virtualbox中安装Ubuntu。
 
@@ -288,42 +288,7 @@ arm-fsl-linux-gnueabi-objcopy -O binary qemuboot.elf qemuboot.bin
 qemu-system-arm -M versatilepb -nographic -kernel qemuboot.bin
 ```
 > 练习：编写Makefile文件，完成上述编译过程。
-参考：
 
-```
-
-CROSS_COMPILE = arm-fsl-linux-gnueabi-
-AS	= $(CROSS_COMPILE)as
-CC	= $(CROSS_COMPILE)gcc
-LD	= $(CROSS_COMPILE)ld
-OBJCOPY	= $(CROSS_COMPILE)objcopy
-OBJDUMP	= $(CROSS_COMPILE)objdump
-
-CFLAGS 	= 
-LDFLAGS = 
-
-BIN = boot.bin
-
-all: $(BIN)
-
- $(BIN):
-    @echo "generating a binary file from a ELF file"
-    $(OBJCOPY)    
-    
-boot_elf:
-
-    @echo "build a ELF file"
-    $(LD)	
-
-.PHONY: all clean
-
-clean:
-    @echo Cleaning...
-    @echo Files:
-    @echo Build output:
-    rm -rf *.o
-
-```
 
 ## 4 IMX287启动过程
 
